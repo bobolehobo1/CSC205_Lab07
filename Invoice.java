@@ -12,6 +12,9 @@ public class Invoice extends Application {
         // create nodes-----------------------------------
         // -pane
         GridPane Gpane = new GridPane();
+        // -TextFields
+        new TextField();
+
         // -Buttons
         Button calculateBT = new Button("Calculate");
         Button backBT = new Button("Back");
