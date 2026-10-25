@@ -13,7 +13,7 @@ public class Invoice extends Application {
 
         //create nodes-----------------------------------
         //-pane
-        VBox Vpane = new VBox();
+        GridPane Gpane = new GridPane();
         //-TextFields
         TextField shirtField = new TextField();
         TextField pantsField = new TextField();
@@ -29,14 +29,17 @@ public class Invoice extends Application {
         Label salestaxLabel = new Label("Sales Tax");
         Label totalbillLabel = new Label("Total Bill:");
         //-Buttons
-        Button calculateBT = new Button();
-        Button backBT = new Button(); 
+        Button calculateBT = new Button("Calculate");
+        Button backBT = new Button("Back"); 
         //------------------------------------------------
         
 
         //configure nodes--------------------------------------------------------------------------------------------------------
-        Scene scene = new Scene(Vpane);
-        Vpane.getChildren().addAll(shirtField, pantsField, tiesField, shoesField, salestaxField, totalbillField, shirtLabel, pantsLabel, tiesLabel, shoesLabel, salestaxLabel, totalbillLabel, calculateBT, backBT);
+        Scene scene = new Scene(Gpane);
+        shirtLabel.setLabelFor(shirtField); shirtLabel.setContentDisplay(ContentDisplay.LEFT);
+        pantsLabel.setLabelFor(pantsField);
+        Gpane.getChildren().add(shirtLabel, 0,0);
+        Gpane.getChildren().add(shirtLabel, 0,0);
         //-----------------------------------------------------------------------------------------------------------------------
         
         
