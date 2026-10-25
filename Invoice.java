@@ -38,8 +38,7 @@ public class Invoice extends Application {
         Scene scene = new Scene(Gpane);
         shirtLabel.setLabelFor(shirtField); shirtLabel.setContentDisplay(ContentDisplay.LEFT);
         pantsLabel.setLabelFor(pantsField);
-        Gpane.getChildren().add(shirtLabel, 0,0);
-        Gpane.getChildren().add(shirtLabel, 0,0);
+        Gpane.getChildren().addAll(shirtField, pantsField, tiesField, shoesField, salestaxField, totalbillField, shirtLabel, pantsLabel, tiesLabel, shoesLabel, salestaxLabel, totalbillLabel, calculateBT, backBT);
         //-----------------------------------------------------------------------------------------------------------------------
         
         
