@@ -2,6 +2,7 @@ import javafx.application.*;
 import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.*;
 
 public class Invoice extends Application {
@@ -12,8 +13,9 @@ public class Invoice extends Application {
         // create nodes-----------------------------------
         // -pane
         GridPane Gpane = new GridPane();
-        // -TextFields
-        new TextField();
+
+        // Text
+        Gpane.getChildren().add(new Text("Mom and Pop’s Clothing Store"));
 
         // -Buttons
         Button calculateBT = new Button("Calculate");
@@ -32,7 +34,7 @@ public class Invoice extends Application {
         Gpane.add(new Label("Shoes"), 0, 3);
         Gpane.add(new TextField(), 1, 3);
         Gpane.add(new Label("Sales Tax"), 0, 4);
-        Gpane.add(new TextField(), 1, 4); // Needed to change into ComboBox
+        Gpane.add(new TextField(), 1, 4);
         ComboBox<Double> cmb = new ComboBox<>();
         for (double i = 3.00; i <= 9.5; i += 0.25) {
             cmb.getItems().add(i);
