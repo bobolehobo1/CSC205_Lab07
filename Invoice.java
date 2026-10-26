@@ -4,6 +4,7 @@ import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.*;
+import javafx.geometry.Pos;
 
 public class Invoice extends Application {
 
@@ -40,7 +41,7 @@ public class Invoice extends Application {
             cmb.getItems().add(i);
         }
         Gpane.add(cmb, 0, 5);
-        Gpane.add(new TextField(), 1, 5);
+        Gpane.setAlignment(Pos.CENTER);
         // -----------------------------------------------------------------------------------------------------------------------
 
         // display nodes-------------
