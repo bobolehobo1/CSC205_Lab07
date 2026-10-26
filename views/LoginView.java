@@ -33,7 +33,7 @@ public class LoginView extends View
 
     // GUI stuff
     private TextField userid;
-    private PasswordField password; // PasswordField is a public class
+    private PasswordField password;
     private Button submitButton;
 
     // For showing error message

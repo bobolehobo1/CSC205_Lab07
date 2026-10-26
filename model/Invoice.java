@@ -6,6 +6,8 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.geometry.*;
 import javafx.stage.*;
+import java.util.*;
+
 import views.LoginView;
 
 public class Invoice extends Application {
@@ -21,15 +23,53 @@ public class Invoice extends Application {
         Window.show();
     }
 
+    // LoginView ----------------------------------------------------------------------
     public void loginView(Stage Window) {   // this is my idea but i'm not sure yet!
-        // LoginView ----------------------------------------------------------------------
+        
         LoginView loginView = new LoginView();
         Scene scene1 = new Scene(loginView);
         Window.setScene(scene1);
+
+        // invoke processLogin()
     }
 
+    public void processLogin(Properties props) {
+
+        // the list of authorized users (ArrayList)
+        ArrayList<AccountHolder> accounts = new ArrayList<>();
+
+        accounts.add(new AccountHolder("trao", "RaoT1", "T M Rao"));
+        accounts.add(new AccountHolder("smitra", "MitraS1", "S Mitra"));
+        accounts.add(new AccountHolder("mcoleman", "Melissa1", "M Coleman"));
+        accounts.add(new AccountHolder("smitra", "MitraS1", "S Mitra"));
+        accounts.add(new AccountHolder("rnsmith", "Rebekah1", "R Smith"));
+
+        // looking through the list of authorized users and logging in
+        String un = props.getProperty("ID");
+        boolean userFound = false;
+        for (int i = 0; i < accounts.size(); i++) {
+            String unInList = accounts.get(i).username;
+            if (unInList.equals(un)) {
+                String pwSent = props.getProperty("Password");
+                String uPwd = accounts.get(i).password;
+                if (uPwd.equals(pwSent)) {
+                    userFound = true;
+                    break;
+                }
+            }
+        }
+        if (userFound) {    // login successfully
+
+        }
+        else {
+            loginView.updateState("LoginError", "Login failed!");
+        }
+    }
+
+
+    // Invoice View -------------------------------------------------------------------
     public void invoiceView(Stage Window) {
-        // Invoice View -------------------------------------------------------------------
+
         // VBox - containing the Text (title), GridPane (TextField), and Buttons
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.CENTER);
