@@ -4,7 +4,6 @@ package views;
 
 // system imports
 import java.util.Properties;
-
 import javafx.event.Event;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -26,7 +25,7 @@ import javafx.scene.text.TextAlignment;
 
 
 
-/** The class containing the Login View for the Loan Application */
+/** The class containing the Login View for the Invoice Application */
 //==============================================================
 public class LoginView extends View
 {
@@ -65,8 +64,7 @@ public class LoginView extends View
         container.getChildren().add(createFormContents());
 
         // Error message area
-        container.getChildren().add
-        (createStatusLog("                          "));
+        container.getChildren().add(createStatusLog("                          "));
 
         // Now, add the VBox (called ‘container’) as a CHILD of
         // the main Group (View) itself. Note that the View is
@@ -81,21 +79,17 @@ public class LoginView extends View
 
     }
 
-    // Create a container for the the title of the screen
+    // Create a label for the the title of the screen
     //-------------------------------------------------------------
     private Node createTitle()
     {
-        HBox container = new HBox();
-        container.setAlignment(Pos.CENTER);    
 
         Text titleText = new Text("Mom and Pop’s Clothing Store");
         titleText.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-        titleText.setWrappingWidth(300);
         titleText.setTextAlignment(TextAlignment.CENTER);
         titleText.setFill(Color.DARKGREEN);
-        container.getChildren().add(titleText);
 
-        return container;
+        return titleText;
     }
 
     // Create the main form contents
@@ -210,7 +204,6 @@ public class LoginView extends View
 
     /**
      * Process userid and pwd supplied when Submit button is hit.
-     * Action is to pass this info on to the Loan object
      */
     //----------------------------------------------------------
     private void processUserIDAndPassword(String useridString,
