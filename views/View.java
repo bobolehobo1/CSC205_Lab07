@@ -17,7 +17,6 @@ public abstract class View extends Group
     //----------------------------------------------------------
     public View(String classname)
     {
-        
         myClassName = classname;
     }
 

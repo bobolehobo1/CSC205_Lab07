@@ -30,12 +30,11 @@ import javafx.scene.text.TextAlignment;
 //==============================================================
 public class LoginView extends View
 {
-
-    // Model, which this View talks to
+    // Invoke Invoice
 
     // GUI stuff
     private TextField userid;
-    private PasswordField password;
+    private PasswordField password; // PasswordField is a public class
     private Button submitButton;
 
     // For showing error message
@@ -82,18 +81,21 @@ public class LoginView extends View
 
     }
 
-    // Create the label control (called Text) for the title 
-    // of the screen
+    // Create a container for the the title of the screen
     //-------------------------------------------------------------
     private Node createTitle()
     {
+        HBox container = new HBox();
+        container.setAlignment(Pos.CENTER);    
 
         Text titleText = new Text("Mom and Pop’s Clothing Store");
         titleText.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        titleText.setWrappingWidth(300);
         titleText.setTextAlignment(TextAlignment.CENTER);
         titleText.setFill(Color.DARKGREEN);
+        container.getChildren().add(titleText);
 
-        return titleText;
+        return container;
     }
 
     // Create the main form contents
