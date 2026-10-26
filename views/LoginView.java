@@ -88,7 +88,7 @@ public class LoginView extends View
     private Node createTitle()
     {
 
-        Text titleText = new Text("     Loan Calculator        ");
+        Text titleText = new Text("Mom and Pop’s Clothing Store");
         titleText.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         titleText.setTextAlignment(TextAlignment.CENTER);
         titleText.setFill(Color.DARKGREEN);

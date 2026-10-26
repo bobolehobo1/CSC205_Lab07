@@ -5,7 +5,6 @@ import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.*;
-import javafx.geometry.Pos;
 
 public class Invoice extends Application {
 
