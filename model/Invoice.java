@@ -15,7 +15,7 @@ public class Invoice extends Application {
     @Override
     public void start(Stage Window) {
         // invoke loginView
-        loginView(Window);
+        //loginView(Window);
 
         // invoke invoiceView
         invoiceView(Window);
@@ -23,6 +23,7 @@ public class Invoice extends Application {
         Window.show();
     }
 
+    /*
     // LoginView ----------------------------------------------------------------------
     public void loginView(Stage Window) {   // this is my idea but i'm not sure yet!
         
@@ -66,6 +67,7 @@ public class Invoice extends Application {
         }
     }
 
+    */
 
     // Invoice View -------------------------------------------------------------------
     public void invoiceView(Stage Window) {
@@ -114,7 +116,7 @@ public class Invoice extends Application {
                 + "";
             gPane.add(new Text(total), 1, 5);
         });
-        backBT.setOnAction(e -> {loginView(Window);});
+        //backBT.setOnAction(e -> {loginView(Window);});
 
         // Add Buttons into vBox
         vBox.getChildren().addAll(calculateBT, backBT);
