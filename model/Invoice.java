@@ -28,7 +28,7 @@ public class Invoice extends Application {
     }
 
     // LoginView ----------------------------------------------------------------------
-    public void loginView(Stage Window) {
+    public void loginView(Stage window) {
     //create
     //-panes
     VBox vbox = new VBox(10);
@@ -41,22 +41,23 @@ public class Invoice extends Application {
     TextField passwordTF = new TextField();
     //-Buttons
     Button loginBT = new Button("Login");
+    //Text
+    Text message = new Text("                          ");
 
     //configure
     //-Buttons
     loginBT.setOnAction(e -> {processLogin(useridTF, passwordTF, message, Window);});
 
-    // FOR THE TEXT MESSAGE 
-    message.setText("                           ");
     
     //-panes
     gpane.add(new Text("User id:"), 0, 1); gpane.add(useridTF, 1,1); gpane.add(new Text("Password:"), 0,2); gpane.add(passwordTF, 1, 2);
-    hbox.getChildren().add(clearErrorMessage, loginBT);
+    hbox.getChildren().addAll(message, loginBT);
     vbox.getChildren().addAll(new Text("Login hoe"), gpane, hbox);
     vbox.setAlignment(Pos.CENTER); // hbox.setAlignment(Pos.CENTER); gpane.setAlignment(Pos.CENTER); 
 
     //display
-    Window.setScene(loginView);
+    window.setScene(loginView);
+    window.show
     }
 
     // processLogin() verifies if the users authorized or not 
