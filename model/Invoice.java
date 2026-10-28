@@ -15,7 +15,7 @@ public class Invoice extends Application {
     @Override
     public void start(Stage Window) {
         // invoke loginView
-        //loginView(Window);
+        loginView(Window);
 
         // invoke invoiceView
         invoiceView(Window);
@@ -23,7 +23,6 @@ public class Invoice extends Application {
         Window.show();
     }
 
-    /*
     // LoginView ----------------------------------------------------------------------
     public void loginView(Stage Window) {   // this is my idea but i'm not sure yet!
         
@@ -67,7 +66,6 @@ public class Invoice extends Application {
         }
     }
 
-    */
 
     // Invoice View -------------------------------------------------------------------
     public void invoiceView(Stage Window) {
@@ -103,6 +101,7 @@ public class Invoice extends Application {
         gPane.add(new Label("Total Bill"), 0, 5);    gPane.add(billTF, 1, 5);
 
         // Add TextField into vBox
+        gPane.setAlignment(Pos.CENTER);
         vBox.getChildren().add(gPane);
 
         // Buttons
@@ -115,16 +114,17 @@ public class Invoice extends Application {
                 + Double.parseDouble(pantsTF.getText()) 
                 + Double.parseDouble(tiesTF.getText()) 
                 + Double.parseDouble(shoesTF.getText())
-                + cmb.getValue()
                 + "";
+            total = Double.parseDouble(total) * (cmb.getValue() + 100)/ 100 + "";
             billTF.setText(total);
             gPane.add(billTF, 1, 5);
         });
-        //backBT.setOnAction(e -> {loginView(Window);});
+        backBT.setOnAction(e -> {loginView(Window);});
 
         // Add Buttons into vBox
-        
-        vBox.getChildren().addAll(new HBox(calculateBT, backBT));
+        HBox hBox = new HBox(calculateBT, backBT);
+        hBox.setAlignment(Pos.CENTER);
+        vBox.getChildren().addAll(hBox);
 
         // Display nodes
         Scene scene2 = new Scene(vBox);
