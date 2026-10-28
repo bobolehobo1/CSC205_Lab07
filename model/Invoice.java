@@ -18,6 +18,7 @@ public class Invoice extends Application {
         loginView(Window);
 
         // invoke invoiceView
+        // 
         invoiceView(Window);
 
         Window.show();
@@ -25,12 +26,32 @@ public class Invoice extends Application {
 
     // LoginView ----------------------------------------------------------------------
     public void loginView(Stage Window) {   // this is my idea but i'm not sure yet!
-        
-        LoginView loginView = new LoginView();
-        Scene scene1 = new Scene(loginView);
-        Window.setScene(scene1);
+    //create
+    //-panes
+    VBox vbox = new VBox(10);
+    GridPane gpane = new GridPane(10, 10);
+    HBox hbox = new HBox(10);
+    //-Scene
+    Scene loginView = new Scene(vbox);
+    //-Textfields
+    TextField useridTF = new TextField(); 
+    TextField passwordTF = new TextField();
+    //-Buttons
+    Button loginBT = new Button("Login");
 
-        // invoke processLogin()
+    //configure
+    //-Buttons
+    loginBT.setOnAction(e -> {processLogin();});
+    //-panes
+    gpane.add(new Text("User id:"), 0, 1); gpane.add(useridTF, 1,1); gpane.add(new Text("Password:"), 0,2); gpane.add(passwordTF, 1, 2);
+    hbox.getChildren().add(clearErrorMessage, loginBT);
+    vbox.getChildren().addAll(new Text("Login hoe"), gpane, hbox);
+    vbox.setAlignment(Pos.CENTER); // hbox.setAlignment(Pos.CENTER); gpane.setAlignment(Pos.CENTER); 
+
+    //display
+    Window.setScene(loginView);
+    
+    
     }
 
     public void processLogin(Properties props) {
