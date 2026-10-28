@@ -103,6 +103,7 @@ public class Invoice extends Application {
         gPane.add(new Label("Total Bill"), 0, 5);    gPane.add(billTF, 1, 5);
 
         // Add TextField into vBox
+        gPane.setAlignment(Pos.CENTER);
         vBox.getChildren().add(gPane);
 
         // Buttons
@@ -123,8 +124,9 @@ public class Invoice extends Application {
         //backBT.setOnAction(e -> {loginView(Window);});
 
         // Add Buttons into vBox
-        
-        vBox.getChildren().addAll(new HBox(calculateBT, backBT));
+        HBox hBox = new HBox(calculateBT, backBT);
+        hBox.setAlignment(Pos.CENTER);
+        vBox.getChildren().addAll(hBox);
 
         // Display nodes
         Scene scene2 = new Scene(vBox);
