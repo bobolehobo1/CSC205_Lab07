@@ -2,8 +2,12 @@ package model;
 import javafx.application.*;
 import javafx.scene.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.control.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.geometry.*;
 import javafx.stage.*;
 import java.util.*;
@@ -24,18 +28,20 @@ public class Invoice extends Application {
     }
 
     // LoginView ----------------------------------------------------------------------
-    public void loginView(Stage Window) {   // this is my idea but i'm not sure yet!
+    public void loginView(Stage Window) {
         
-        LoginView loginView = new LoginView();
-        Scene scene1 = new Scene(loginView);
+
+        Scene scene1 = new Scene(some kind of pane here);
         Window.setScene(scene1);
 
+        // having Text message  -> set position
+        // message.setText("                           ");
         // invoke processLogin()
     }
 
-    public void processLogin(Properties props) {
-
-        // the list of authorized users (ArrayList)
+    // processLogin() verifies if the users authorized or not 
+    public void processLogin(TextField id, TextField pw, Text message, Stage Window) {
+        // List of authorized users
         ArrayList<AccountHolder> accounts = new ArrayList<>();
 
         accounts.add(new AccountHolder("trao", "RaoT1", "T M Rao"));
@@ -44,28 +50,35 @@ public class Invoice extends Application {
         accounts.add(new AccountHolder("smitra", "MitraS1", "S Mitra"));
         accounts.add(new AccountHolder("rnsmith", "Rebekah1", "R Smith"));
 
-        // looking through the list of authorized users and logging in
-        String un = props.getProperty("ID");
-        boolean userFound = false;
+        // Check id and pw
+        // when there's no input
+        if (id.getText() == null || pw.getText() == null) {
+            message.setText("Please enter your user id and password!");
+            formatMessage(message);
+            id.setText("");
+            pw.setText("");
+            return;
+        }
+
+        // when the input is correct
         for (int i = 0; i < accounts.size(); i++) {
-            String unInList = accounts.get(i).username;
-            if (unInList.equals(un)) {
-                String pwSent = props.getProperty("Password");
-                String uPwd = accounts.get(i).password;
-                if (uPwd.equals(pwSent)) {
-                    userFound = true;
-                    break;
-                }
+            if (id.getText().equals(accounts.get(i).username) && pw.getText().equals(accounts.get(i).password)) {
+                invoiceView(Window);
+                return;
             }
         }
-        if (userFound) {    // login successfully
 
-        }
-        else {
-            loginView.updateState("LoginError", "Login failed!");
-        }
+        // when the input is incorrect
+        message.setText("Incorrect userid or password!");
+        formatMessage(message);
+        return;
     }
-
+   
+    public void formatMessage(Text message) {
+        message.setFont(Font.font("Helvetica", FontWeight.BOLD, 16));
+        message.setTextAlignment(TextAlignment.LEFT);
+        message.setFill(Color.RED);
+    }
 
     // Invoice View -------------------------------------------------------------------
     public void invoiceView(Stage Window) {
