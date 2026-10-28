@@ -83,12 +83,11 @@ public class Invoice extends Application {
         GridPane gPane = new GridPane();
 
         // TextField
-        TextField shirtsTF = new TextField();
-        TextField pantsTF = new TextField();
-        TextField tiesTF = new TextField();
-        TextField shoesTF = new TextField();
-        TextField billTF = new TextField();
-        billTF.setEditable(false);
+        TextField shirtsTF = new TextField();   shirtsTF.setText("0.00");
+        TextField pantsTF = new TextField();    pantsTF.setText("0.00");
+        TextField tiesTF = new TextField();     tiesTF.setText("0.00");
+        TextField shoesTF = new TextField();    shoesTF.setText("0.00");
+        TextField billTF = new TextField();     billTF.setEditable(false);
 
         gPane.add(new Label("Shirts"), 0, 0);        gPane.add(shirtsTF, 1, 0);
         gPane.add(new Label("Pants"), 0, 1);         gPane.add(pantsTF, 1, 1);
@@ -98,6 +97,7 @@ public class Invoice extends Application {
         // ComboBox for Sales Tax
         ComboBox<Double> cmb = new ComboBox<>();
         for (double i = 3.00; i <= 9.5; i += 0.25) {cmb.getItems().add(i);}
+        cmb.setValue(8.25);
         gPane.add(cmb, 1, 4);
 
         gPane.add(new Label("Total Bill"), 0, 5);    gPane.add(billTF, 1, 5);
