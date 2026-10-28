@@ -87,17 +87,20 @@ public class Invoice extends Application {
         TextField pantsTF = new TextField();
         TextField tiesTF = new TextField();
         TextField shoesTF = new TextField();
+        TextField billTF = new TextField();
+        billTF.setEditable(false);
 
         gPane.add(new Label("Shirts"), 0, 0);        gPane.add(shirtsTF, 1, 0);
         gPane.add(new Label("Pants"), 0, 1);         gPane.add(pantsTF, 1, 1);
         gPane.add(new Label("Ties"), 0, 2);          gPane.add(tiesTF, 1, 2);
         gPane.add(new Label("Shoes"), 0, 3);         gPane.add(shoesTF, 1, 3);
-        gPane.add(new Label("Sales Tax"), 0, 4);     
+        gPane.add(new Label("Sales Tax"), 0, 4);
         // ComboBox for Sales Tax
         ComboBox<Double> cmb = new ComboBox<>();
         for (double i = 3.00; i <= 9.5; i += 0.25) {cmb.getItems().add(i);}
-        
-        gPane.add(new Label("Total Bill"), 0, 5);    gPane.add(cmb, 1, 4);
+        gPane.add(cmb, 1, 4);
+
+        gPane.add(new Label("Total Bill"), 0, 5);    gPane.add(billTF, 1, 5);
 
         // Add TextField into vBox
         vBox.getChildren().add(gPane);
@@ -114,12 +117,14 @@ public class Invoice extends Application {
                 + Double.parseDouble(shoesTF.getText())
                 + cmb.getValue()
                 + "";
-            gPane.add(new Text(total), 1, 5);
+            billTF.setText(total);
+            gPane.add(billTF, 1, 5);
         });
         //backBT.setOnAction(e -> {loginView(Window);});
 
         // Add Buttons into vBox
-        vBox.getChildren().addAll(calculateBT, backBT);
+        
+        vBox.getChildren().addAll(new HBox(calculateBT, backBT));
 
         // Display nodes
         Scene scene2 = new Scene(vBox);
