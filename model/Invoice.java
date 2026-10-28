@@ -12,7 +12,6 @@ import javafx.geometry.*;
 import javafx.stage.*;
 import java.util.*;
 
-import views.LoginView;
 
 public class Invoice extends Application {
 
@@ -22,6 +21,7 @@ public class Invoice extends Application {
         loginView(Window);
 
         // invoke invoiceView
+        // 
         invoiceView(Window);
 
         Window.show();
@@ -29,14 +29,34 @@ public class Invoice extends Application {
 
     // LoginView ----------------------------------------------------------------------
     public void loginView(Stage Window) {
-        
+    //create
+    //-panes
+    VBox vbox = new VBox(10);
+    GridPane gpane = new GridPane(10, 10);
+    HBox hbox = new HBox(10);
+    //-Scene
+    Scene loginView = new Scene(vbox);
+    //-Textfields
+    TextField useridTF = new TextField(); 
+    TextField passwordTF = new TextField();
+    //-Buttons
+    Button loginBT = new Button("Login");
 
-        Scene scene1 = new Scene(some kind of pane here);
-        Window.setScene(scene1);
+    //configure
+    //-Buttons
+    loginBT.setOnAction(e -> {processLogin(useridTF, passwordTF, message, Window);});
 
-        // having Text message  -> set position
-        // message.setText("                           ");
-        // invoke processLogin()
+    // FOR THE TEXT MESSAGE 
+    message.setText("                           ");
+    
+    //-panes
+    gpane.add(new Text("User id:"), 0, 1); gpane.add(useridTF, 1,1); gpane.add(new Text("Password:"), 0,2); gpane.add(passwordTF, 1, 2);
+    hbox.getChildren().add(clearErrorMessage, loginBT);
+    vbox.getChildren().addAll(new Text("Login hoe"), gpane, hbox);
+    vbox.setAlignment(Pos.CENTER); // hbox.setAlignment(Pos.CENTER); gpane.setAlignment(Pos.CENTER); 
+
+    //display
+    Window.setScene(loginView);
     }
 
     // processLogin() verifies if the users authorized or not 
