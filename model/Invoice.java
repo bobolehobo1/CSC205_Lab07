@@ -14,21 +14,14 @@ import java.util.*;
 
 
 public class Invoice extends Application {
-
     @Override
-    public void start(Stage Window) {
+    public void start(Stage stage) {
         // invoke loginView
-        loginView(Window);
-
-        // invoke invoiceView
-        // 
-        invoiceView(Window);
-
-        Window.show();
+        loginView(stage);
     }
 
     // LoginView ----------------------------------------------------------------------
-    public void loginView(Stage window) {
+    public void loginView(Stage stage) {
     //create
     //-panes
     VBox vbox = new VBox(10);
@@ -46,22 +39,22 @@ public class Invoice extends Application {
 
     //configure
     //-Buttons
-    loginBT.setOnAction(e -> {processLogin(useridTF, passwordTF, message, Window);});
+    loginBT.setOnAction(e -> {processLogin(useridTF, passwordTF, message, stage);});
 
     
     //-panes
     gpane.add(new Text("User id:"), 0, 1); gpane.add(useridTF, 1,1); gpane.add(new Text("Password:"), 0,2); gpane.add(passwordTF, 1, 2);
     hbox.getChildren().addAll(message, loginBT);
-    vbox.getChildren().addAll(new Text("Login hoe"), gpane, hbox);
-    vbox.setAlignment(Pos.CENTER); // hbox.setAlignment(Pos.CENTER); gpane.setAlignment(Pos.CENTER); 
+    vbox.getChildren().addAll(new Text("Mom and Pop’s Clothing Store"), gpane, hbox);
+    vbox.setAlignment(Pos.CENTER); hbox.setAlignment(Pos.CENTER); gpane.setAlignment(Pos.CENTER); 
 
     //display
-    window.setScene(loginView);
-    window.show
+    stage.setScene(loginView);
+    stage.show();
     }
 
     // processLogin() verifies if the users authorized or not 
-    public void processLogin(TextField id, TextField pw, Text message, Stage Window) {
+    public void processLogin(TextField id, TextField pw, Text message, Stage stage) {
         // List of authorized users
         ArrayList<AccountHolder> accounts = new ArrayList<>();
 
@@ -73,7 +66,7 @@ public class Invoice extends Application {
 
         // Check id and pw
         // when there's no input
-        if (id.getText() == null || pw.getText() == null) {
+        if (id.getText().length() == 0 || pw.getText().length() == 0) {
             message.setText("Please enter your user id and password!");
             formatMessage(message);
             id.setText("");
@@ -84,7 +77,7 @@ public class Invoice extends Application {
         // when the input is correct
         for (int i = 0; i < accounts.size(); i++) {
             if (id.getText().equals(accounts.get(i).username) && pw.getText().equals(accounts.get(i).password)) {
-                invoiceView(Window);
+                invoiceView(stage);
                 return;
             }
         }
@@ -102,7 +95,7 @@ public class Invoice extends Application {
     }
 
     // Invoice View -------------------------------------------------------------------
-    public void invoiceView(Stage Window) {
+    public void invoiceView(Stage stage) {
 
         // VBox - containing the Text (title), GridPane (TextField), and Buttons
         VBox vBox = new VBox(10);
@@ -153,7 +146,7 @@ public class Invoice extends Application {
             billTF.setText(total);
             gPane.add(billTF, 1, 5);
         });
-        backBT.setOnAction(e -> {loginView(Window);});
+        backBT.setOnAction(e -> {loginView(stage);});
 
         // Add Buttons into vBox
         HBox hBox = new HBox(calculateBT, backBT);
@@ -162,7 +155,7 @@ public class Invoice extends Application {
 
         // Display nodes
         Scene scene2 = new Scene(vBox);
-        Window.setScene(scene2);
+        stage.setScene(scene2);
     }
 
     // main method---------------------------
